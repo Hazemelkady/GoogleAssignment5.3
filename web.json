@@ -1,11 +1,11 @@
 {
     "installed": {
-        "client_id": "1002935315366-cfs97q2kob970jee2pni14jfmdvme0gt.apps.googleusercontent.com",
-        "project_id": "calendarproject-379614",
+        "client_id": "*****************.apps.googleusercontent.com",
+        "project_id": "calendarproject-*********",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
         "token_uri": "https://oauth2.googleapis.com/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret": "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",
+        "client_secret": "******************",
         "redirect_uris": [ "http://localhost" ]
     }
 }
