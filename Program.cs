@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
@@ -70,8 +71,41 @@ namespace GoogleAssignment5._3
         {
                string[] scopsfram = { CalendarService.Scope.Calendar };
           string credPath = "web.json";
-        CreateNewEvent _crv = new CreateNewEvent(credPath, "admin", scopsfram);
-            _crv.insertEvent();
+            string evid = "eventid" + 7;
+            Event _ev = new Event()
+            {
+                Id = evid,
+                Summary = "A Tech I/O 2023",
+                Location = "Katamia Maasi",
+                Description = "An Assignment job",
+
+                ConferenceData = new ConferenceData
+                {
+                    Notes = ""
+                },
+
+                Start = new EventDateTime()
+                {
+                    DateTime = new DateTime(2023, 03, 10, 15, 30, 0),
+                    TimeZone = "UTC"
+                }
+               ,
+                End = new EventDateTime()
+                {
+                    DateTime = new DateTime(2023, 03, 10, 16, 30, 0),
+                    TimeZone = "UTC"
+
+                }
+               ,
+
+                Attendees = new List<EventAttendee>
+                    {
+                        new EventAttendee() { Email = "hazem_elkady@hotmail.com"},
+
+                    }
+            };
+            CreateNewEvent _crv = new CreateNewEvent(credPath, "admin", scopsfram, evid);
+            _crv.insertEvent(_ev);
 
             return Console.ReadLine();
 
@@ -79,10 +113,11 @@ namespace GoogleAssignment5._3
 
         private static string RemoveEvent()
         {
+            string evid = "eventid" + 6;
             string[] scopsfram = { CalendarService.Scope.Calendar };
             string credPath = "web.json";
             DeleteGEvent _Delv = new DeleteGEvent(credPath, "admin", scopsfram);
-            _Delv.DelEvent();
+            _Delv.DelEvent(evid);
 
             return Console.ReadLine();
         }
